@@ -51,10 +51,14 @@ var verifyToken = function (req, res, next) {
     console.log(req.user);
     next();
 };
-router.get('/user', verifyToken, utils_1.safe(actions.getUsers));
+router.get('/user', utils_1.safe(actions.getUsers));
 router.post('/characters', utils_1.safe(actions.createCharacter));
 router.get('/character/:id', utils_1.safe(actions.getCharacter));
 router.get('/planet/:id', utils_1.safe(actions.getPlanet));
 router.post('/planets', utils_1.safe(actions.createPlanet));
 router.post('/favCharacter/:id', utils_1.safe(actions.FavCharacters));
+router.post('/favPlanet/:id', utils_1.safe(actions.FavPlanets));
+router["delete"]('/favCharacter/:id', utils_1.safe(actions.deleteFavCharacter));
+router["delete"]('/favPlanet/:id', utils_1.safe(actions.deleteFavPlanet));
+router.get('/userFav', utils_1.safe(actions.getUsersFav));
 exports["default"] = router;
